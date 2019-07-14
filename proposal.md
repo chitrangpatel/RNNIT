@@ -3,7 +3,7 @@
 Chitrang Patel 
 July 14th, 2019
 
-## Proposal // Recurrent Neural Network for Investment Trading
+## Implementation of the Recurrent Neural Network for Investment Trading
 
 ### Domain Background
 Technical analysis is a trading discipline employed to evaluate investments and identify trading opportunities by analyzing statistical trends gathered from trading activity, such as price movement and volume. Technical trading focuses on patterns of price movements, trading signals and various other analytical charting tools to evaluate a security's strength or weakness<sup>1</sup>. Computorization of the exchanges began in the early 1970s, with some landmarks being the introduction of the New York Stock Exchange's “designated order turnaround” system (DOT, and later SuperDOT), which routed orders electronically to the proper trading post, which executed them manually<sup>2</sup>.
@@ -44,7 +44,6 @@ This project will be implemented using the Keras/TensorFlow library, specificall
 I will take the following steps:
 
 - Set up the project and install necessary libraries.
-  - Use Python scripts.
   - GitHub (https://github.com/chitrangpatel/RNNIT)
   - Incorporate required Libraries (Keras, Tensorflow, Pandas, Numpy, Matplotlib, Seaborn, yahoo-historical)
   - Git project organization
