@@ -1,2 +1,2 @@
 # RNNIT
-Recurrent Neural Network for Investment Trading
+Recurrent Neural Network for Investment Trading (RRNIT)
