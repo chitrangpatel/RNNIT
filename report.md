@@ -108,9 +108,24 @@ The data will be split into training (`2009-01-01` to `2017-05-31`) and testing 
 it will be scaled. Once scaled, the model will fit the data to the training set and tune the hyperparameters and extract the best  choice of hyperparameters. Using the best choice of hyperparameters, we will re-compile the model and apply it to the test set for predicting the following days adj closing prices and evaluate the performance metrics. This process is repeated for all the five companies.
 
 ### Benchmark
-In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
-- _Has some result or value been provided that acts as a benchmark for measuring performance?_
-- _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
+
+The benchmark used for this project was a linear regression model. The model was created using `Scikit-Learn`'s `LinearRegression` model. Default hyperparameters were used. The model was fit on the training data set and then applied on the test data set's features to predict the target values (`Adj Close` prices). The predicted Adj Close prices were compared to the actual Adj Close prices and the following metrics were produced for each company:
+
+<table align="center">
+<caption>Benchmark Model's Performance </caption>
+<tr><th></th> <th>R-squared score</th> <th>Root Mean Squared Error</th></tr>
+<tr><td>AAPL</td><td style="text-align: right;"> -2.56287209982    </td><td style="text-align: right;">  43.429880088   </td>          </tr>
+<tr><td>GOOGL </td><td style="text-align: right;"> -4.99054412757 </td><td style="text-align: right;"> 219.075335817 </td> </tr>
+<tr><td>AMZN  </td><td style="text-align: right;">  -3.59015930696</td><td style="text-align: right;">  720.119868027</td> </tr>
+<tr><td>NVDA  </td><td style="text-align: right;">  -13.9705382656   </td><td style="text-align: right;">  158.757250998  </td> </tr>
+<tr><td>MSFT  </td><td style="text-align: right;">  -4.73631784175 </td><td style="text-align: right;"> 33.9609792838  </td> </tr>
+</table>
+As seen in the table, the R-squared score is negative meaning that the variation in the target values are poorly dependent on the features used in the model when using the Linear Regression model. The root mean squared error is also very high, higher than 40%.
+
+The plot below shows the predicted values (Adj Close prices of the following day) in blue and the actual (true) values in orange. The `x-axis` shows the days (There were ~400 days in the testing dataset) for which the model was tested (`2017-06-01` to `2019-01-01`). 
+<p align="center">
+  <img src="prediction_actual_values.png" width="1000" title="Predicted vs True Adj Closing Prices">
+</p>
 
 
 ## III. Methodology
