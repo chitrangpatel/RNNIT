@@ -15,19 +15,25 @@ This project uses Recurrant Neural Nets (RNNs), particularly the Long Short Term
 The main task for this project is to accurately predict the future adjusted closing value of a given stock for the next day given the previous day's values. The stocks that I used for this project are AAPL, MSFT, AMZN, GOOGL and NVDA.
 The approach to this problem was as follows:
 - Download the data using the Yahoo Historical package from pip. The data used for this project was from 2009-01-01 to 2019-01-01.
-- 
+- Extract the features used in training the model and the target that we want to predict.
+- Split the features and target into training and testing sets.
+- Make the benchmark Linear Regression Model.
+- Use the model to fit the training dataset.
+- Use the trained model to predict the target values of the test dataset. 
+- Evaluate the performance of this model by comparing it to the actual target values.
+- Make the RNN model using the LSTM architechture.
+- Use this model to fit the training dataset and learn from it.
+- Use the trained model to predict the target values of the test dataset. 
+- Evaluate the performance of this model by comparing it to the actual target values.
 
-
-In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
-- _Is the problem statement clearly defined? Will the reader understand what you are expecting to solve?_
-- _Have you thoroughly discussed how you will attempt to solve the problem?_
-- _Is an anticipated solution clearly defined? Will the reader understand what results you are looking for?_
+We want to then compare performance between the Linear Regression model and the RNN model.
 
 ### Metrics
-In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
-- _Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?_
-- _Have you provided reasonable justification for the metrics chosen based on the problem and solution?_
 
+Since this is a regression type of a problem, I use the R-square score and the root mean squared error as performance metrics.
+`R-square` is a statistical measure of how much the variation in the target variable can be explained by the dependent variables (features) in a regression model.
+`Root mean squared error` is the square root of the mean of the squares of the difference between the predicted values from the model and the actual (true) values.
+Both these metrics are used heavily for regression problems in the literature.
 
 ## II. Analysis
 _(approx. 2-4 pages)_
