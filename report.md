@@ -36,14 +36,63 @@ Since this is a regression type of a problem, I use the R-square score and the r
 Both these metrics are used heavily for regression problems in the literature.
 
 ## II. Analysis
-_(approx. 2-4 pages)_
-
 ### Data Exploration
-In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
-- _If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?_
-- _If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?_
-- _If a dataset is **not** present for this problem, has discussion been made about the input space or input data for your problem?_
-- _Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)_
+
+This project explores the data for the following companies `AAPL` (Apple), `GOOGL` (Google), `AMZN` (Amazon), `NVDA` (Nvidea), and `MSFT` (Microsoft). The data for the analysis was extracted using the PyPI package `yahoo historical` from `2009-01-01` to `2019-01-01`. The data consisted of `Open`, `High`, `Low`, `Close`, `Adj Close`, and `Volume` for each day. The goal of this project is to predict the `Adj Close` price for the following day using the information in the past. Over the duration of 10 years, there were data for 2516 days since the market is open from Monday to Friday. The dataset for each ticker is summarized below in their respective tables -- `Count`, `Mean`, `Std deviation`, `Min`, and `Max` values. As clearly shown, the `Volume` values are very large compared to the other values. In order to run the models successfully, we need to scale the data to the same level. There were no missing values in the dataset.  
+
+<table>
+<caption>AAPL</caption>
+<tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
+<tr><td>count</td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516      </td><td style="text-align: right;">2516          </td></tr>
+<tr><td>mean </td><td style="text-align: right;">  91.5972</td><td style="text-align: right;">  92.4069</td><td style="text-align: right;">  90.7341</td><td style="text-align: right;">  91.5873</td><td style="text-align: right;">  85.4103 </td><td style="text-align: right;">   8.6325e+07 </td></tr>
+<tr><td>std  </td><td style="text-align: right;">  50.2748</td><td style="text-align: right;">  50.6859</td><td style="text-align: right;">  49.8551</td><td style="text-align: right;">  50.2726</td><td style="text-align: right;">  50.3187 </td><td style="text-align: right;">   6.1923e+07 </td></tr>
+<tr><td>min  </td><td style="text-align: right;">  11.3414</td><td style="text-align: right;">  11.7143</td><td style="text-align: right;">  11.1714</td><td style="text-align: right;">  11.1714</td><td style="text-align: right;">   9.74945</td><td style="text-align: right;">   1.14759e+07</td></tr>
+<tr><td>max  </td><td style="text-align: right;"> 230.78  </td><td style="text-align: right;"> 233.47  </td><td style="text-align: right;"> 229.78  </td><td style="text-align: right;"> 232.07  </td><td style="text-align: right;"> 228.524  </td><td style="text-align: right;">   4.7025e+08 </td></tr>
+</table>
+
+
+<table>
+<caption>GOOGL</caption>
+<tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
+<tr><td>count</td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">  2516          </td></tr>
+<tr><td>mean </td><td style="text-align: right;"> 554.972</td><td style="text-align: right;"> 559.659</td><td style="text-align: right;"> 549.823</td><td style="text-align: right;"> 554.842</td><td style="text-align: right;"> 554.842</td><td style="text-align: right;">     3.9364e+06 </td></tr>
+<tr><td>std  </td><td style="text-align: right;"> 296.359</td><td style="text-align: right;"> 298.913</td><td style="text-align: right;"> 293.517</td><td style="text-align: right;"> 296.245</td><td style="text-align: right;"> 296.245</td><td style="text-align: right;">     2.99744e+06</td></tr>
+<tr><td>min  </td><td style="text-align: right;"> 144.319</td><td style="text-align: right;"> 149.9  </td><td style="text-align: right;"> 141.517</td><td style="text-align: right;"> 141.517</td><td style="text-align: right;"> 141.517</td><td style="text-align: right;">520600          </td></tr>
+<tr><td>max  </td><td style="text-align: right;">1289.12 </td><td style="text-align: right;">1291.44 </td><td style="text-align: right;">1263    </td><td style="text-align: right;">1285.5  </td><td style="text-align: right;">1285.5  </td><td style="text-align: right;">     2.96199e+07</td></tr>
+</table>
+</div>
+
+
+<table>
+<caption>AMZN</caption>
+<tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
+<tr><td>count</td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">  2516          </td></tr>
+<tr><td>mean </td><td style="text-align: right;"> 505.953</td><td style="text-align: right;"> 511.113</td><td style="text-align: right;"> 499.909</td><td style="text-align: right;"> 505.746</td><td style="text-align: right;"> 505.746</td><td style="text-align: right;">     4.99449e+06</td></tr>
+<tr><td>std  </td><td style="text-align: right;"> 467.136</td><td style="text-align: right;"> 471.579</td><td style="text-align: right;"> 461.101</td><td style="text-align: right;"> 466.377</td><td style="text-align: right;"> 466.377</td><td style="text-align: right;">     3.44577e+06</td></tr>
+<tr><td>min  </td><td style="text-align: right;">  48.56 </td><td style="text-align: right;">  50.1  </td><td style="text-align: right;">  47.63 </td><td style="text-align: right;">  48.44 </td><td style="text-align: right;">  48.44 </td><td style="text-align: right;">984400          </td></tr>
+<tr><td>max  </td><td style="text-align: right;">2038.11 </td><td style="text-align: right;">2050.5  </td><td style="text-align: right;">2013    </td><td style="text-align: right;">2039.51 </td><td style="text-align: right;">2039.51 </td><td style="text-align: right;">     5.83058e+07</td></tr>
+</table>
+
+<table>
+<caption>NVDA</caption>
+<tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
+<tr><td>count</td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516      </td><td style="text-align: right;">2516          </td></tr>
+<tr><td>mean </td><td style="text-align: right;">  54.7694</td><td style="text-align: right;">  55.5706</td><td style="text-align: right;">  53.8663</td><td style="text-align: right;">  54.7438</td><td style="text-align: right;">  53.8381 </td><td style="text-align: right;">   1.38323e+07</td></tr>
+<tr><td>std  </td><td style="text-align: right;">  73.8333</td><td style="text-align: right;">  74.8638</td><td style="text-align: right;">  72.5991</td><td style="text-align: right;">  73.7494</td><td style="text-align: right;">  73.7429 </td><td style="text-align: right;">   9.06445e+06</td></tr>
+<tr><td>min  </td><td style="text-align: right;">   7.21  </td><td style="text-align: right;">   7.47  </td><td style="text-align: right;">   7.08  </td><td style="text-align: right;">   7.21  </td><td style="text-align: right;">   6.65138</td><td style="text-align: right;">   1.1411e+06 </td></tr>
+<tr><td>max  </td><td style="text-align: right;"> 289.32  </td><td style="text-align: right;"> 292.76  </td><td style="text-align: right;"> 285.58  </td><td style="text-align: right;"> 289.36  </td><td style="text-align: right;"> 288.444  </td><td style="text-align: right;">   9.23232e+07</td></tr>
+</table>
+
+
+<table>
+<caption>MSFT</caption>
+<tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
+<tr><td>count</td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516          </td></tr>
+<tr><td>mean </td><td style="text-align: right;">  45.5529</td><td style="text-align: right;">  45.9534</td><td style="text-align: right;">  45.1356</td><td style="text-align: right;">  45.5646</td><td style="text-align: right;">  41.4448</td><td style="text-align: right;">   4.37174e+07</td></tr>
+<tr><td>std  </td><td style="text-align: right;">  23.9477</td><td style="text-align: right;">  24.1402</td><td style="text-align: right;">  23.6991</td><td style="text-align: right;">  23.9257</td><td style="text-align: right;">  24.919 </td><td style="text-align: right;">   2.47416e+07</td></tr>
+<tr><td>min  </td><td style="text-align: right;">  15.2   </td><td style="text-align: right;">  15.62  </td><td style="text-align: right;">  14.87  </td><td style="text-align: right;">  15.15  </td><td style="text-align: right;">  11.7711</td><td style="text-align: right;">   7.4256e+06 </td></tr>
+<tr><td>max  </td><td style="text-align: right;"> 115.42  </td><td style="text-align: right;"> 116.18  </td><td style="text-align: right;"> 114.93  </td><td style="text-align: right;"> 115.61  </td><td style="text-align: right;"> 113.821 </td><td style="text-align: right;">   3.19318e+08</td></tr>
+</table>
 
 ### Exploratory Visualization
 In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
