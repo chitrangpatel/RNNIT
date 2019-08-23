@@ -95,10 +95,10 @@ This project explores the data for the following companies `AAPL` (Apple), `GOOG
 </table>
 
 ### Exploratory Visualization
-In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant characteristic or feature about the dataset or input data?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
+The plot below shows the adjusted closing prices (`Adj Close`) for each company (`company name` shown on the `y-axis`) as a function of `date` (shown on the `x-axis`). The adjusted closing price is the target value that we are trying to predict.
+<p align="center">
+  <img src="adj_closing_prices.png" width="1000" title="Adj Closing Prices">
+</p>
 
 ### Algorithms and Techniques
 In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
