@@ -103,6 +103,7 @@ The plot below shows the adjusted closing prices (`Adj Close`) for each company 
 ### Algorithms and Techniques
 
 In this project, I used the Recurrant Neural Network model using the Long Short Term Memory Architechture. The features used as input are the `Open`, `High`, `Low`, `Close`, `Adjusted Close` and `Volume` from the previous days to predict the target `Adj Close` of the following day. The hyperparameters that will be tuned are `epochs` (the number of times we want to train the model), `batch size` (how many days we want to look at during each training step) and the `optimizer` (the optimization function when fitting the model).
+
 The data will be split into training (`2009-01-01` to `2017-05-31`) and testing (`2018-06-01` to `2019-01-01`) set after which
 it will be scaled. Once scaled, the model will fit the data to the training set and tune the hyperparameters and extract the best  choice of hyperparameters. Using the best choice of hyperparameters, we will re-compile the model and apply it to the test set for predicting the following days adj closing prices and evaluate the performance metrics. This process is repeated for all the five companies.
 
