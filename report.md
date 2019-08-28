@@ -146,16 +146,23 @@ The implementation of the Recurrant Neural Network was done using the Keras libr
 - LSTM layer with 128 units and input shape (1, number of features - 6 in our case).
 - Dropout layer with a dropout rate of 0.5 to regularize the network and get a better generalization.
 - Dense layer with 1 neuron
-- Activation layer with a specified activation function (`linear` by default).
+- Activation layer with a `linear` activation function.
 The model was then compiled using an input optimizer (`nadam` by default).
 
-The model was run on the training set using different batch sizes and number of epochs that were tuned for best performance. I also used a validation set (5% of the training set) and by monitoring the validation loss, I kept track of the model's performance on the training and validation set to ensure that the model did not overfit the data. The trained model was finally used on the testing set to predict the target `Adj Close` prices. 
+The model was run on the training set using different batch sizes and number of epochs that were tuned for best performance. I also used a validation set (5% of the training set) and by monitoring the validation loss, I kept track of the model's performance on the training and validation set to ensure that the model did not overfit the data as shown in the plot below.
 
+<p align="center">
+  <img src="learning_history.png" width="1000" title="Predicted vs True Adj Closing Prices">
+</p>
 ### Refinement
-In this section, you will need to discuss the process of improvement you made upon the algorithms and techniques you used in your implementation. For example, adjusting parameters for certain models to acquire improved solutions would fall under the refinement category. Your initial and final solutions should be reported, as well as any significant intermediate results as necessary. Questions to ask yourself when writing this section:
-- _Has an initial solution been found and clearly reported?_
-- _Is the process of improvement clearly documented, such as what techniques were used?_
-- _Are intermediate and final solutions clearly reported as the process is improved?_
+
+The following hyperparameters were tuned using `Scikit-Learn's` `GridSearchCV`:
+- `batch size`: the number of days after which we update the learning of the model. The choices were `10` and `30`. 
+- `epochs`: the number of times the model was retrained. The choices used were `20` and `50` times.
+- `optimizer`: The optimizer function used while compiling the model. The choices used were `adam` and `nadam`.
+
+The model was tuned on the dataset of `AAPL` and performed best when it used a `batch_size=30`, `epochs=20`, `optimizer=adam`.
+I also manually tried tuning the `activation` function between, `relu`, `sigmoid` and `linear`. The `linear` activation function showed the best performance. I did the same with the number of LSTM layers and it turnsout that using just a single LSTM layer performed the quickest and generalized best.
 
 
 ## IV. Results
