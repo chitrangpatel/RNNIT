@@ -138,13 +138,18 @@ As shown in the section on `Data Exploration`, compared to the features `Open`, 
 - I then computed the standard deviation of the mean subtracted dataset.
 - I then divided the mean subtracted dataset by the standard deviation.
 
-The custom 
+The custom scaling was required to be unscaled back to the originals before comparing the predicted values and the actual target values. It showed amazing improvement over the default Min-Max scaling.
 
 ### Implementation
-In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
-- _Is it made clear how the algorithms and techniques were implemented with the given datasets or input data?_
-- _Were there any complications with the original metrics or techniques that required changing prior to acquiring a solution?_
-- _Was there any part of the coding process (e.g., writing complicated functions) that should be documented?_
+
+The implementation of the Recurrant Neural Network was done using the Keras library (which used the tensorflow backend). The RNN was a simple sequencial model which contained the following layers (in the same order):
+- LSTM layer with 128 units and input shape (1, number of features - 6 in our case).
+- Dropout layer with a dropout rate of 0.5 to regularize the network and get a better generalization.
+- Dense layer with 1 neuron
+- Activation layer with a specified activation function (`linear` by default).
+The model was then compiled using an input optimizer (`nadam` by default).
+
+The model was run on the training set using different batch sizes and number of epochs that were tuned for best performance. I also used a validation set (5% of the training set) and by monitoring the validation loss, I kept track of the model's performance on the training and validation set to ensure that the model did not overfit the data. The trained model was finally used on the testing set to predict the target `Adj Close` prices. 
 
 ### Refinement
 In this section, you will need to discuss the process of improvement you made upon the algorithms and techniques you used in your implementation. For example, adjusting parameters for certain models to acquire improved solutions would fall under the refinement category. Your initial and final solutions should be reported, as well as any significant intermediate results as necessary. Questions to ask yourself when writing this section:
