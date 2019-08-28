@@ -154,6 +154,7 @@ The model was run on the training set using different batch sizes and number of 
 <p align="center">
   <img src="learning_history_after_tuning.png" width="1000" title="Predicted vs True Adj Closing Prices">
 </p>
+
 ### Refinement
 
 The following hyperparameters were tuned using `Scikit-Learn's` `GridSearchCV`:
