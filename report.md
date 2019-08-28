@@ -164,7 +164,6 @@ The following hyperparameters were tuned using `Scikit-Learn's` `GridSearchCV`:
 The model was tuned on the dataset of `AAPL` and performed best when it used a `batch_size=30`, `epochs=20`, `optimizer=adam`.
 I also manually tried tuning the `activation` function between, `relu`, `sigmoid` and `linear`. The `linear` activation function showed the best performance. I did the same with the number of LSTM layers and it turnsout that using just a single LSTM layer performed the quickest and generalized best.
 
-
 ## IV. Results
 _(approx. 2-3 pages)_
 
