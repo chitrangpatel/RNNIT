@@ -221,8 +221,8 @@ I was particularly amazed at the performance of RNN when compared to the linear 
 One thing that I would definitely improve is my RNN model architechture. It seems like it is using the actual target values from the day or two before to be the prediction of the next day. The root mean squared error seems small overall but it is similar to the daily fluctiatuon in the stock prices so in its current state, I would not employ this model as is, to actual data. Another thing that I could improve on is feature selection and use of global market indicators like data from `Dow Jones`, `S&P 500` or `Nasdaq`. Another thing to try is using a Reinforcement Learning approach to this problem. There are applications of `OpenAI` to timeseries data forecasting that could be applied here.
 
 ### References
-[Keras // Deep Learning library for Theano and TensorFlow](https://keras.io)
-[Time Series Prediction With Deep Learning in Keras](http://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
-[Yahoo Finance](http://finance.yahoo.com/)
-[Yahoo Historical // Python API](https://pypi.python.org/pypi/yahoo-historical)
-[Scikit-Learn](http://scikit-learn.org/)
+- [Keras // Deep Learning library for Theano and TensorFlow](https://keras.io)
+- [Time Series Prediction With Deep Learning in Keras](http://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
+- [Yahoo Finance](http://finance.yahoo.com/)
+- [Yahoo Historical // Python API](https://pypi.python.org/pypi/yahoo-historical)
+- [Scikit-Learn](http://scikit-learn.org/)
