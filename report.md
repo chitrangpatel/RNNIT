@@ -204,11 +204,16 @@ In this section, you will need to provide some form of visualization that emphas
 - _If a plot is provided, are the axes, title, and datum clearly defined?_
 
 ### Reflection
-In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
-- _Have you thoroughly summarized the entire process you used for this project?_
-- _Were there any interesting aspects of the project?_
-- _Were there any difficult aspects of the project?_
-- _Does the final model and solution fit your expectations for the problem, and should it be used in a general setting to solve these types of problems?_
+
+This project uses a Recurrent Neural Network using the Long Short Term Memory architechture to predict future `Adjusted Closing` stock prices (specifically the next day but can be generalized to predict any day in the future). It goes after five stocks `AAPL`, `GOOGL`, `AMZN`, `NVDA`, and `MSFT`. It uses the features `High`, `Low`, `Open`, `Close`, `Adj Close` and `Volume` values of historical data downloaded using the python package `Yahoo Historical`. 
+
+I then split the analysis into two stages: running the benchmark model and running the RNN model. The benchmark model chosen for this analysis was `Scikit-Learn`'s `linear regression` model where the input data was the `Adj Close` prices and the target was the same variable but for the next day. After applying the linear regression model, the performance was evaluated against the testing dataset using `R-squared` and `root mean squared errors` as evaluation metrics for the model. After this, I moved on to applying the RNN model using the LSTM architechture.
+
+The data were split into features and target variables where the target value we want to predict was `Adj Close` of the following day and the features were all the variables from the previous days. The features and target were then split into training and testing datasets, divided using a split date. Since the values of the `Volume` variable were orders of magnitude larger than the remaining variables, the data needed to be regularized and scaled to a similar level. This was a particularly challenging aspect of the project, ie. finding the best way of scaling the data. It took me days to figure out that it was because of poor scaling that the predicted prices were not as expected for some of the stocks. I ended up using a custom scaling function where I subtracted the mean of the features from the individual values and then normalized with respect to the standard deviation of the mean subtracted data. 
+
+Next, I applied the RNN model composed of an LSTM layer with 128 units, followed by a dropout, dense and an activation layer using the `linear` function as the activation function. The model was compiled using `adam` as the optimization function. Several hyperparameters were tuned, `batch size`, `epochs` and `optimizer`. I also manually tuned the number of layers in the neural network and the unit sizes for optimal performance. Like with the benchmark model, this model was evaluated against the testing set using `R-squared` and `root mean squared error` as performance metrics. 
+
+I was particularly amazed at the performance of RNN when compared to the linear regression model. The differences in the evaluation metrics were shocking to me. I was very satisfied with the RNN model when it came to predicing the next days `Adj Close` prices of any stock.  
 
 ### Improvement
 In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
