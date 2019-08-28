@@ -1,7 +1,7 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Project
 Chitrang Patel  
-August 22, 2019
+August 28, 2019
 
 ## I. Definition
 
