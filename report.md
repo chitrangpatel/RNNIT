@@ -1,7 +1,7 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Project
 Chitrang Patel  
-August 22, 2019
+August 28, 2019
 
 ## I. Definition
 
@@ -124,7 +124,7 @@ As seen in the table, the R-squared score is negative meaning that the variation
 
 The plot below shows the predicted values (Adj Close prices of the following day) in blue and the actual (true) values in orange. The `x-axis` shows the days (There were ~400 days in the testing dataset) for which the model was tested (`2017-06-01` to `2019-01-01`). 
 <p align="center">
-  <img src="linear_regression_prediction_actual_values.png" width="1000" title="Predicted vs True Adj Closing Prices">
+  <img src="linear_regression_prediction_actual_values.png" width="1000" title="Predicted vs True Adj Closing Prices using Linear Regression">
 </p>
 
 
@@ -151,7 +151,7 @@ The model was then compiled using an input optimizer (`nadam` by default).
 The model was run on the training set using different batch sizes and number of epochs that were tuned for best performance. I also used a validation set (5% of the training set) and by monitoring the validation loss, I kept track of the model's performance on the training and validation set to ensure that the model did not overfit the data as shown in the plot below.
 
 <p align="center">
-  <img src="learning_history_after_tuning.png" width="1000" title="Predicted vs True Adj Closing Prices">
+  <img src="learning_history_after_tuning.png" width="1000" title="Learning History">
 </p>
 
 ### Refinement
@@ -182,7 +182,7 @@ The R-squared scores are very close to 1 meaning that the features predict the v
 
 The plot showing the predicted `Adj Close` prices and the actual `Adj Close` prices are shown in the plot below. As you can see, the model performs really well throughout the testing period and for all the stocks. I also changed the split date for different sizes of the training and testing datasets and the results still seem robust against that. 
 <p align="center">
-  <img src="lstm_prediction_actual_values.png" width="1000" title="Predicted vs True Adj Closing Prices">
+  <img src="lstm_prediction_actual_values.png" width="1000" title="Predicted vs True Adj Closing Prices using RNN">
 </p>
 
 ### Justification
@@ -198,10 +198,11 @@ Even though the `RNN` model can be improved, it is doing an amazing job at predi
 _(approx. 1-2 pages)_
 
 ### Free-Form Visualization
-In this section, you will need to provide some form of visualization that emphasizes an important quality about the project. It is much more free-form, but should reasonably support a significant result or characteristic about the problem that you want to discuss. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant or important quality about the problem, dataset, input data, or results?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
+
+The plot below shows the percentage difference between predicted and actual next day's `Adjusted Closing` Prices. This plot was an eye opener as to how difficult it is to predict the future prices in time series data and that the RNN model needs to be significantly improved. Even though the `root mean squared error` is `<5%` using the RNN model, the day to day variations can be as high as `40%`! for certain stocks.  
+<p align="center">
+  <img src="percent_difference.png" width="1000" title="Percentage difference between predicted and actual next day's Adjusted Closing Prices">
+</p>
 
 ### Reflection
 
@@ -216,19 +217,12 @@ Next, I applied the RNN model composed of an LSTM layer with 128 units, followed
 I was particularly amazed at the performance of RNN when compared to the linear regression model. The differences in the evaluation metrics were shocking to me. I was very satisfied with the RNN model when it came to predicing the next days `Adj Close` prices of any stock.  
 
 ### Improvement
-In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
-- _Are there further improvements that could be made on the algorithms or techniques you used in this project?_
-- _Were there algorithms or techniques you researched that you did not know how to implement, but would consider using if you knew how?_
-- _If you used your final solution as the new benchmark, do you think an even better solution exists?_
 
------------
+One thing that I would definitely improve is my RNN model architechture. It seems like it is using the actual target values from the day or two before to be the prediction of the next day. The root mean squared error seems small overall but it is similar to the daily fluctiatuon in the stock prices so in its current state, I would not employ this model as is, to actual data. Another thing that I could improve on is feature selection and use of global market indicators like data from `Dow Jones`, `S&P 500` or `Nasdaq`. Another thing to try is using a Reinforcement Learning approach to this problem. There are applications of `OpenAI` to timeseries data forecasting that could be applied here.
 
-**Before submitting, ask yourself. . .**
-
-- Does the project report you’ve written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Analysis** and **Methodology**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your analysis, methods, and results?
-- Have you properly proof-read your project report to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
-- Is the code that implements your solution easily readable and properly commented?
-- Does the code execute without error and produce results similar to those reported?
+### References
+- [Keras // Deep Learning library for Theano and TensorFlow](https://keras.io)
+- [Time Series Prediction With Deep Learning in Keras](http://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
+- [Yahoo Finance](http://finance.yahoo.com/)
+- [Yahoo Historical // Python API](https://pypi.python.org/pypi/yahoo-historical)
+- [Scikit-Learn](http://scikit-learn.org/)
