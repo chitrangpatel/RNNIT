@@ -217,19 +217,12 @@ Next, I applied the RNN model composed of an LSTM layer with 128 units, followed
 I was particularly amazed at the performance of RNN when compared to the linear regression model. The differences in the evaluation metrics were shocking to me. I was very satisfied with the RNN model when it came to predicing the next days `Adj Close` prices of any stock.  
 
 ### Improvement
-In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
-- _Are there further improvements that could be made on the algorithms or techniques you used in this project?_
-- _Were there algorithms or techniques you researched that you did not know how to implement, but would consider using if you knew how?_
-- _If you used your final solution as the new benchmark, do you think an even better solution exists?_
 
------------
+One thing that I would definitely improve is my RNN model architechture. It seems like it is using the actual target values from the day or two before to be the prediction of the next day. The root mean squared error seems small overall but it is similar to the daily fluctiatuon in the stock prices so in its current state, I would not employ this model as is, to actual data. Another thing that I could improve on is feature selection and use of global market indicators like data from `Dow Jones`, `S&P 500` or `Nasdaq`. Another thing to try is using a Reinforcement Learning approach to this problem. There are applications of `OpenAI` to timeseries data forecasting that could be applied here.
 
-**Before submitting, ask yourself. . .**
-
-- Does the project report you’ve written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Analysis** and **Methodology**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your analysis, methods, and results?
-- Have you properly proof-read your project report to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
-- Is the code that implements your solution easily readable and properly commented?
-- Does the code execute without error and produce results similar to those reported?
+### References
+[Keras // Deep Learning library for Theano and TensorFlow](https://keras.io)
+[Time Series Prediction With Deep Learning in Keras](http://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
+[Yahoo Finance](http://finance.yahoo.com/)
+[Yahoo Historical // Python API](https://pypi.python.org/pypi/yahoo-historical)
+[Scikit-Learn](http://scikit-learn.org/)
