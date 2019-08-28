@@ -195,7 +195,6 @@ Even though the `RNN` model can be improved, it is doing an amazing job at predi
 
 
 ## V. Conclusion
-_(approx. 1-2 pages)_
 
 ### Free-Form Visualization
 
