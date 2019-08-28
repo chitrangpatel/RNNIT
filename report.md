@@ -199,7 +199,7 @@ _(approx. 1-2 pages)_
 
 ### Free-Form Visualization
 
-The plot below shows the percentage difference between predicted and actual next day's `Adjusted Closing` Prices. This plot was an eye opener as to how difficult it is to predict the future prices in time series data and that the RNN model needs to be significantly improved. Even though the `root mean squared error` is `<5%` using the RNN model, the day to day variations can be as high as `40%`! for certain stocks.  
+The plot below shows the percentage difference between predicted and actual next day's `Adjusted Closing` Prices. The `x-axis` is the days of the testing period. This plot was an eye opener as to how difficult it is to predict the future prices in time series data and that the RNN model needs to be significantly improved. Even though the `root mean squared error` is `<5%` using the RNN model, the day to day variations can be as high as `40%`! for certain stocks.  
 <p align="center">
   <img src="percent_difference.png" width="1000" title="Percentage difference between predicted and actual next day's Adjusted Closing Prices">
 </p>
