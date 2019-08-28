@@ -41,7 +41,7 @@ Both these metrics are used heavily for regression problems in the literature.
 This project explores the data for the following companies `AAPL` (Apple), `GOOGL` (Google), `AMZN` (Amazon), `NVDA` (Nvidea), and `MSFT` (Microsoft). The data for the analysis was extracted using the PyPI package `yahoo historical` from `2009-01-01` to `2019-01-01`. The data consisted of `Open`, `High`, `Low`, `Close`, `Adj Close`, and `Volume` for each day. The goal of this project is to predict the `Adj Close` price for the following day using the information in the past. Over the duration of 10 years, there were data for 2516 days since the market is open from Monday to Friday. The dataset for each ticker is summarized below in their respective tables -- `Count`, `Mean`, `Std deviation`, `Min`, and `Max` values. As clearly shown, the `Volume` values are very large compared to the other values. In order to run the models successfully, we need to scale the data to the same level. There were no missing values in the dataset.  
 
 <table>
-<caption>AAPL</caption>
+<caption>Table 1: AAPL</caption>
 <tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
 <tr><td>count</td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516      </td><td style="text-align: right;">2516          </td></tr>
 <tr><td>mean </td><td style="text-align: right;">  91.5972</td><td style="text-align: right;">  92.4069</td><td style="text-align: right;">  90.7341</td><td style="text-align: right;">  91.5873</td><td style="text-align: right;">  85.4103 </td><td style="text-align: right;">   8.6325e+07 </td></tr>
@@ -52,7 +52,7 @@ This project explores the data for the following companies `AAPL` (Apple), `GOOG
 
 
 <table>
-<caption>GOOGL</caption>
+<caption>Table 2: GOOGL</caption>
 <tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
 <tr><td>count</td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">  2516          </td></tr>
 <tr><td>mean </td><td style="text-align: right;"> 554.972</td><td style="text-align: right;"> 559.659</td><td style="text-align: right;"> 549.823</td><td style="text-align: right;"> 554.842</td><td style="text-align: right;"> 554.842</td><td style="text-align: right;">     3.9364e+06 </td></tr>
@@ -64,7 +64,7 @@ This project explores the data for the following companies `AAPL` (Apple), `GOOG
 
 
 <table>
-<caption>AMZN</caption>
+<caption>Table 3: AMZN</caption>
 <tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
 <tr><td>count</td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">2516    </td><td style="text-align: right;">  2516          </td></tr>
 <tr><td>mean </td><td style="text-align: right;"> 505.953</td><td style="text-align: right;"> 511.113</td><td style="text-align: right;"> 499.909</td><td style="text-align: right;"> 505.746</td><td style="text-align: right;"> 505.746</td><td style="text-align: right;">     4.99449e+06</td></tr>
@@ -74,7 +74,7 @@ This project explores the data for the following companies `AAPL` (Apple), `GOOG
 </table>
 
 <table>
-<caption>NVDA</caption>
+<caption>Table 4: NVDA</caption>
 <tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
 <tr><td>count</td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516      </td><td style="text-align: right;">2516          </td></tr>
 <tr><td>mean </td><td style="text-align: right;">  54.7694</td><td style="text-align: right;">  55.5706</td><td style="text-align: right;">  53.8663</td><td style="text-align: right;">  54.7438</td><td style="text-align: right;">  53.8381 </td><td style="text-align: right;">   1.38323e+07</td></tr>
@@ -85,7 +85,7 @@ This project explores the data for the following companies `AAPL` (Apple), `GOOG
 
 
 <table>
-<caption>MSFT</caption>
+<caption>Table 5: MSFT</caption>
 <tr><th></th> <th>Open</th> <th>High</th> <th>Low</th> <th>Close</th> <th>Adj Close</th> <th>Volume</th></tr>
 <tr><td>count</td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516     </td><td style="text-align: right;">2516          </td></tr>
 <tr><td>mean </td><td style="text-align: right;">  45.5529</td><td style="text-align: right;">  45.9534</td><td style="text-align: right;">  45.1356</td><td style="text-align: right;">  45.5646</td><td style="text-align: right;">  41.4448</td><td style="text-align: right;">   4.37174e+07</td></tr>
@@ -112,7 +112,7 @@ it will be scaled. Once scaled, the model will fit the data to the training set 
 The benchmark used for this project was a linear regression model. The model was created using `Scikit-Learn`'s `LinearRegression` model. Default hyperparameters were used. The model was fit on the training data set and then applied on the test data set's features to predict the target values (`Adj Close` prices). The predicted Adj Close prices were compared to the actual Adj Close prices and the following metrics were produced for each company:
 
 <table align="center">
-<caption>Benchmark Model's Performance </caption>
+<caption>Table 6: Benchmark Model's Performance </caption>
 <tr><th></th> <th>R-squared score</th> <th>Root Mean Squared Error</th></tr>
 <tr><td>AAPL</td><td style="text-align: right;"> -2.56287209982    </td><td style="text-align: right;">  43.429880088   </td>          </tr>
 <tr><td>GOOGL </td><td style="text-align: right;"> -4.99054412757 </td><td style="text-align: right;"> 219.075335817 </td> </tr>
@@ -170,7 +170,7 @@ I also manually tried tuning the `activation` function between, `relu`, `sigmoid
 
 After the model was fit to the training set, it was applied to the testing dataset to output the predictions which were then unscaled back to the original level for comparison with the target test values. The RNN model was evaluated using `R-squared` score and `root mean squared errors`, just like it was done with the benchmark model. In contrast to the benchmark model, the RNN model performs extremely well, if we just compare the R-squared scores and the root mean squared errors as shown below:
 <table align="center">
-<caption>RNN Model's Performance </caption>
+<caption>Table 7: RNN Model's Performance </caption>
 <tr><th></th> <th>R-squared score</th> <th>Root Mean Squared Error</th></tr>
 <tr><td>AAPL  </td><td style="text-align: right;"> 0.965 </td><td style="text-align: right;"> 4.3   </td> </tr>
 <tr><td>GOOGL </td><td style="text-align: right;"> 0.930 </td><td style="text-align: right;"> 23.6  </td> </tr>
@@ -186,10 +186,12 @@ The plot showing the predicted `Adj Close` prices and the actual `Adj Close` pri
 </p>
 
 ### Justification
-In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
-- _Are the final results found stronger than the benchmark result reported earlier?_
-- _Have you thoroughly analyzed and discussed the final solution?_
-- _Is the final solution significant enough to have solved the problem?_
+
+By comparing the `R-squared` scores of the benchmark `linear regression` model to the `RNN` model, it's evident that the fit using the RNN model is significantly better. The scores when using the RNN model for all the stocks are between `0.93 and 0.983` which are very close to 1 showing that using this model, the variation in the target values are very well explained by the features. On the other hand, the benchmark model gives very poor `R-squared` scores (between `-14` and `-2.5`) showing that the variation in the target model is not well explained by the features. 
+
+By comparing the `root mean squared errors` of the benchmark model to the `RNN` model, it is evident that the `RNN` model does a much better job at predicting the target values. The root mean squared error is `< ~5%` from the RNN model whereas it is `> ~40%` if we use the bench mark model.
+
+Even though the `RNN` model can be improved, it is doing an amazing job at predicting the `Adj Close` prices of the following day. It gets worse at predicting the `Adj Close` prices for future days (eg. 10 days from today). That's where this model needs to be improved. 
 
 
 ## V. Conclusion
