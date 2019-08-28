@@ -152,7 +152,7 @@ The model was then compiled using an input optimizer (`nadam` by default).
 The model was run on the training set using different batch sizes and number of epochs that were tuned for best performance. I also used a validation set (5% of the training set) and by monitoring the validation loss, I kept track of the model's performance on the training and validation set to ensure that the model did not overfit the data as shown in the plot below.
 
 <p align="center">
-  <img src="learning_history.png" width="1000" title="Predicted vs True Adj Closing Prices">
+  <img src="learning_history_after_tuning.png" width="1000" title="Predicted vs True Adj Closing Prices">
 </p>
 ### Refinement
 
