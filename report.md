@@ -124,12 +124,11 @@ As seen in the table, the R-squared score is negative meaning that the variation
 
 The plot below shows the predicted values (Adj Close prices of the following day) in blue and the actual (true) values in orange. The `x-axis` shows the days (There were ~400 days in the testing dataset) for which the model was tested (`2017-06-01` to `2019-01-01`). 
 <p align="center">
-  <img src="prediction_actual_values.png" width="1000" title="Predicted vs True Adj Closing Prices">
+  <img src="linear_regression_prediction_actual_values.png" width="1000" title="Predicted vs True Adj Closing Prices">
 </p>
 
 
 ## III. Methodology
-_(approx. 3-5 pages)_
 
 ### Data Preprocessing
 As shown in the section on `Data Exploration`, compared to the features `Open`, `High`, `Low`, `Close` and `Adj Close` prices, the `Volume` values were much higher. Because of this, the data needed to be transformed and scaled to a similar level. I explored two types of scaling, `min-max` scaling using `Scikit-Learn's` `MinMaxScalar` transform where we subtract the `min` value from each feature value and then divide by the `max` feature value minus the `min` feature value. This transformation did not produce good results. My guess is that it is because the range (`max - min` value) is very different for the training dataset vs the testing dataset. This is clear from the first plot in the `Data Exploration` section where there is a clear sharp rise and a fall in the `Adj Close` prices from `2018` to `2019`, which is in the testing data set. In contrast, the early days are much gradual which are a part of the training dataset. I ended up using the following custom scaling:
@@ -166,9 +165,26 @@ The model was tuned on the dataset of `AAPL` and performed best when it used a `
 I also manually tried tuning the `activation` function between, `relu`, `sigmoid` and `linear`. The `linear` activation function showed the best performance. I did the same with the number of LSTM layers and it turnsout that using just a single LSTM layer performed the quickest and generalized best.
 
 ## IV. Results
-_(approx. 2-3 pages)_
 
 ### Model Evaluation and Validation
+
+After the model was fit to the training set, it was applied to the testing dataset to output the predictions which were then unscaled back to the original level for comparison with the target test values. The RNN model was evaluated using `R-squared` score and `root mean squared errors`, just like it was done with the benchmark model. In contrast to the benchmark model, the RNN model performs extremely well, if we just compare the R-squared scores and the root mean squared errors as shown below:
+<table align="center">
+<caption>RNN Model's Performance </caption>
+<tr><th></th> <th>R-squared score</th> <th>Root Mean Squared Error</th></tr>
+<tr><td>AAPL  </td><td style="text-align: right;"> 0.965 </td><td style="text-align: right;"> 4.3   </td> </tr>
+<tr><td>GOOGL </td><td style="text-align: right;"> 0.930 </td><td style="text-align: right;"> 23.6  </td> </tr>
+<tr><td>AMZN  </td><td style="text-align: right;"> 0.983 </td><td style="text-align: right;"> 44.1  </td> </tr>
+<tr><td>NVDA  </td><td style="text-align: right;"> 0.951 </td><td style="text-align: right;"> 9.1   </td> </tr>
+<tr><td>MSFT  </td><td style="text-align: right;"> 0.980 </td><td style="text-align: right;"> 1.99 </td> </tr>
+</table>
+The R-squared scores are very close to 1 meaning that the features predict the variation in the data very well. Also, the root mean squared error is about `5%` for all the stocks.
+
+The plot showing the predicted `Adj Close` prices and the actual `Adj Close` prices are shown in the plot below.
+<p align="center">
+  <img src="lstm_prediction_actual_values.png" width="1000" title="Predicted vs True Adj Closing Prices">
+</p>
+
 In this section, the final model and any supporting qualities should be evaluated in detail. It should be clear how the final model was derived and why this model was chosen. In addition, some type of analysis should be used to validate the robustness of this model and its solution, such as manipulating the input data or environment to see how the model’s solution is affected (this is called sensitivity analysis). Questions to ask yourself when writing this section:
 - _Is the final model reasonable and aligning with solution expectations? Are the final parameters of the model appropriate?_
 - _Has the final model been tested with various inputs to evaluate whether the model generalizes well to unseen data?_
