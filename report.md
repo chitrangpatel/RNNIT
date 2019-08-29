@@ -236,3 +236,4 @@ One thing that I would definitely improve is my RNN model architechture. It seem
 - [Yahoo Finance](http://finance.yahoo.com/)
 - [Yahoo Historical // Python API](https://pypi.python.org/pypi/yahoo-historical)
 - [Scikit-Learn](http://scikit-learn.org/)
+- [Wikipedia LSTM Cell](https://en.wikipedia.org/wiki/Long_short-term_memory#/media/File:The_LSTM_cell.png)
