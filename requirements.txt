@@ -85,7 +85,7 @@ numpy==1.12.0
 numpydoc==0.6.0
 odo==0.5.0
 olefile==0.44
-opencv-python==3.2.0.6
+opencv-python==4.2.0.32
 openpyxl==2.4.1
 pandas==0.19.2
 pandocfilters==1.4.1
